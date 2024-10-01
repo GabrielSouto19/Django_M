@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinando Django</title>
+</head>
+<body>
+    <h1>Carros do Pycode Br</h1>
+    <h3>So os carro top !</h3>
+    {%block content%}
+    {% for x in lista_carros %}
+        <li>{{x.model}}|{{x.brand}} {{x.photo}}<img src="../Carros/media/{{x.photo}}" alt="carro"></li>
+    {% endfor %}
+    {% endblock %}
+    
+    
+</body>
+</html>
