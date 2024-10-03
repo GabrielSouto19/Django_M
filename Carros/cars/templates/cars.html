@@ -10,7 +10,7 @@
     <h3>So os carro top !</h3>
     {%block content%}
     {% for x in lista_carros %}
-        <li>{{x.model}}|{{x.brand}} {{x.photo}}<img src="../Carros/media/{{x.photo}}" alt="carro"></li>
+        <h3>{{x.model}}|{{x.brand}} {{x.photo}}<img src="../Carros/media/{{x.photo}}" alt="carro"></h3>
     {% endfor %}
     {% endblock %}
     
