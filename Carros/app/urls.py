@@ -10,5 +10,6 @@ from cars import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cars/',view=views.show_cars),
+    path('cars/',view=views.show_cars,name="cars_list"),
+    path('new_car/',view=views.new_car,name="new_car"),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
