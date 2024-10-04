@@ -17,7 +17,7 @@ def register_user(request):
     
     return render(request,'register.html',{'user_form':user_form})
 
-def login(request):
+def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -25,7 +25,7 @@ def login(request):
         if user is not None:
             print(f"Estou chegando ate aqui{user}")
             login(request,user)
-            return redirect("new_car")
+            return redirect("cars_list")
         else:
             auth_form = AuthenticationForm()
 
