@@ -28,7 +28,4 @@ def new_car(request):
             
     else:
         new_car_form = CarModelForm()
-        context = {
-            "new_car_form":new_car_form 
-        }
-        return render(request,"new_car.html",context)
+    return render(request,"new_car.html",{"new_car_form":new_car_form})
