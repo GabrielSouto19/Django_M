@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 
 # Create your views here.
@@ -10,7 +10,7 @@ def register_user(request):
         if user_form.is_valid():
             user_form.save()
             print("Cheguei ate aqui 3")
-            return redirect('cars_list')
+            return redirect('login')
     else:
         
         user_form  = UserCreationForm()  
@@ -18,6 +18,7 @@ def register_user(request):
     return render(request,'register.html',{'user_form':user_form})
 
 def login_view(request):
+    # login do djangoteste é ingh123456
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -34,3 +35,7 @@ def login_view(request):
     else:
         auth_form = AuthenticationForm()
     return render(request,'login.html',{'auth_form':auth_form})
+
+def logout_view(request):
+    logout(request)
+    return redirect("cars_list")
