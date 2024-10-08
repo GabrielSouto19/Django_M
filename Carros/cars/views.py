@@ -1,8 +1,6 @@
-from django.shortcuts import render,redirect
-from .models import Car
-from .forms import CarModelForm
-from django.views import View
-from django.views.generic import ListView
+from cars.models import Car
+from cars.forms import CarModelForm
+from django.views.generic import ListView,CreateView
 
 
 
@@ -18,16 +16,12 @@ class CarsListView(ListView):
             cars = cars.filter(model__icontains=search)
         return cars
 
-class NewCarView(View):
-    def get(self,request):
-        new_car_form = CarModelForm()   
-        return render(request,"new_car.html",{"new_car_form":new_car_form})
 
+class NewCarCreateView(CreateView):
+    model = Car
+    form_class = CarModelForm 
+    template_name = "new_car.html"
+    # dessa maneira ele te da um valor de context padrão de form , então temos que trocar la no new_car.html 
 
-    def post(self,request):
-        new_car_form = CarModelForm(request.POST,request.FILES)
-        if new_car_form.is_valid():
-            new_car_form.save()    
-            return redirect('cars_list')
-        return render(request,"new_car.html",{"new_car_form":new_car_form})
+    success_url = "/cars/"
 
